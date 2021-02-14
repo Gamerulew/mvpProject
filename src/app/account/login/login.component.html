@@ -1,0 +1,37 @@
+<div class="row" style="margin-top: 130px;">
+  <div class="col-12 col-md-8 d-md-block d-none" id="bgImg">
+  </div>
+<div id="loginDiv" class="form-signin text-center col-12 col-md-4 m-auto">
+  <form [formGroup]="loginForm" class="bg-light rounded card-body">
+    <img class="mb-4" src="/assets/images/logo.png" alt="" width="100">
+    <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput name="username" id="username" formControlName="username" required />
+      <mat-icon matSuffix>face</mat-icon>
+      <mat-error *ngIf="loginForm.get('username')!.hasError('required')">
+        User name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" name="password" id="password"
+             formControlName="password">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="loginForm.get('password')!.hasError('required')">
+        Password is required.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="checkbox mb-3">
+      <mat-checkbox class="example-margin">Lembre-se de mim</mat-checkbox>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+  </form>
+</div>
+
+</div>
